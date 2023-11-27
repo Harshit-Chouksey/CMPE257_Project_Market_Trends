@@ -7,11 +7,8 @@ import matplotlib.pyplot as plt
 import math
 from sklearn.metrics import mean_squared_error
 
-df = pd.read_csv('./LSTM/stock_price.csv')
+df = pd.read_csv('stock_price.csv')
 data = df.reset_index()['Close']
-
-# plt.plot(data)
-# plt.show()
 
 scaler = MinMaxScaler(feature_range=(0, 1))
 data = scaler.fit_transform(np.array(data).reshape(-1, 1))
