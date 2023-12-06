@@ -48,7 +48,7 @@ model.add(LSTM(50))
 model.add(Dense(1))
 model.compile(loss='mean_squared_error', optimizer='adam')  # Stochastic Gradient Descent
 model.summary()
-history = model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=100, verbose=1)
+history = model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=1000, verbose=1)
 
 training_time = time.time() - start_time
 print("Training Time:", training_time)
@@ -63,7 +63,10 @@ predicting_time = time.time() - start_time
 print("Predicting Time:", predicting_time)
 
 loss = model.evaluate(X_test, y_test)
-print("Test Loss:", loss)
+
+a = math.sqrt(mean_squared_error(y_train, train_predict))
+b = math.sqrt(mean_squared_error(y_test, test_predict))
+print("Train Error", a,"Test Error:", b)
 
 look_back = 100
 trainPredictPlot = np.empty_like(data)
